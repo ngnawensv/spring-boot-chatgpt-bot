@@ -1,0 +1,6 @@
+openai:
+    model: ${OPENAI_MODEL:gpt-3.5-turbo}
+    api:
+        key: ${OPENAI_API_KEY} #Add your own key
+        url: ${OPENAI_API_URL:https://api.openai.com/v1/chat/completions}
+

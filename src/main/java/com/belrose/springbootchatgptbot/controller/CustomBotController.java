@@ -1,33 +1,28 @@
 package com.belrose.springbootchatgptbot.controller;
 
-import com.belrose.springbootchatgptbot.dto.ChatGptRequest;
-import com.belrose.springbootchatgptbot.dto.ChatGptResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import com.belrose.springbootchatgptbot.service.CustomBotService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/bot")
 public class CustomBotController {
 
-    @Value("${openai.model}")
-    private String model;
+    private final CustomBotService customBotService;
 
-    @Value("${openai.api.url}")
-    private String apiUrl;
-    @Autowired
-    private RestTemplate template;
+    public CustomBotController(CustomBotService customBotService) {
+        this.customBotService = customBotService;
+    }
 
-    @PostMapping("/bot")
-    public String chat(@RequestParam("prompt") String prompt){
-        ChatGptRequest request = new ChatGptRequest(model,prompt);
-        ChatGptResponse chatGptResponse = template
-                .postForObject(apiUrl,request, ChatGptResponse.class);
-        assert chatGptResponse != null;
-        return chatGptResponse.getChoices().getFirst().getMessage().getContent();
+    @PostMapping("/completions")
+    public ResponseEntity<String> completion(@RequestHeader("prompt") String prompt){
+        String response = customBotService.completion(prompt);
+        return  ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping("/chat-completions")
+    public ResponseEntity<String> chatCompletion(@RequestHeader("prompt") String prompt){
+        String response = customBotService.chatCompletion(prompt);
+        return  ResponseEntity.ok().body(response);
     }
 }

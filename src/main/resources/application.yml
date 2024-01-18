@@ -1,6 +1,12 @@
 openai:
-    model: ${OPENAI_MODEL:gpt-3.5-turbo}
+    model:
+        completions: ${OPENAI_MODEL_COMPLETIONS:gpt-3.5-turbo-instruct}
+        chat-completions: ${OPENAI_MODEL_CHAT_COMPLETIONS:gpt-3.5-turbo-16k}
+
     api:
-        key: ${OPENAI_API_KEY} #Add your own key
-        url: ${OPENAI_API_URL:https://api.openai.com/v1/chat/completions}
+        key: ${OPENAI_API_KEY} #Add your own key. Generate it here https://platform.openai.com/api-keys
+        url:
+            completions: ${OPENAI_MODEL_COMPLETIONS:https://api.openai.com/v1/completions}
+            chat-completions: ${OPENAI_MODEL_CHAT_COMPLETIONS:https://api.openai.com/v1/chat/completions}
+
 

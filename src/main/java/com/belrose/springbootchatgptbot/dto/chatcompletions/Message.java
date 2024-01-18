@@ -1,6 +1,7 @@
-package com.belrose.springbootchatgptbot.dto;
+package com.belrose.springbootchatgptbot.dto.chatcompletions;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Message implements Serializable {
-    private String role; //what you accessing with
-    private String content; // What you looking for
+    private String role;
+    private String content;
 }

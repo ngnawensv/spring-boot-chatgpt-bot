@@ -1,7 +1,6 @@
-package com.belrose.springbootchatgptbot.dto;
+package com.belrose.springbootchatgptbot.dto.completions;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatGptResponse implements Serializable {
+public class GptResponse implements Serializable {
     private List<Choice> choices;
 
     //inner class
@@ -20,6 +19,6 @@ public class ChatGptResponse implements Serializable {
     @AllArgsConstructor
     public static class Choice {
         private int index;
-        private Message message;
+        private String text;
     }
 }

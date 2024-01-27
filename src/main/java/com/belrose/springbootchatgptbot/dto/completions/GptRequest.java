@@ -15,4 +15,7 @@ import java.io.Serializable;
 public class GptRequest implements Serializable {
     private String model;
     private String prompt;
+
+    //generate fields getters
+
 }

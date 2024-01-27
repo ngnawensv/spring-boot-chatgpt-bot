@@ -4,7 +4,7 @@ This application is build using the chatGPT model : gpt-3.5-turbo
 
 API endpoint  
 CompletionsAPI:https://api.openai.com/v1/completions    
-**`_/v1/completions_`** is for single prompt. you can use this endpoints if your app provides those services
+**_`/v1/completions`_** is for single prompt. you can use this endpoints if your app provides those services
 1.     translation
 2.     text or code generation
 3.     revise a message

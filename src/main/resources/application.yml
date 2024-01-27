@@ -9,4 +9,10 @@ openai:
             completions: ${OPENAI_MODEL_COMPLETIONS:https://api.openai.com/v1/completions}
             chat-completions: ${OPENAI_MODEL_CHAT_COMPLETIONS:https://api.openai.com/v1/chat/completions}
 
-
+---
+#Add your own key. Generate it here https://platform.openai.com/api-keys
+#This config is for spring AI
+spring:
+    ai:
+        openai:
+            api-key: ${OPENAI_API_KEY}
